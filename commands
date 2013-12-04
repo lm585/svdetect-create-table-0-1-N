@@ -1,1 +1,26 @@
-dd
+sh  script-combine-sv >   sv-126-hardw-accessions.txt
+# bamboo directory under boyce server
+# this command creates 
+# CitrusA chr1    84296   84610   chr1    85256   85471   6       F,      R,      DELETION        975.5   UNBAL   260     93
+# add sample name, insert avg, insert std
+
+
+sh   script-combine-sv-sv-interact-2 0 >  sv-combined-3sv-net
+# no '-', no 'accession' in the sv-126-hardw-accessions.txt
+# create interaction file
+
+ get-module-net            sv-combined-3sv-net sv-combined-3sv-module
+
+ sh    script-module-2-conserv-txt > sv-combined-3sv-conserv
+
+cut -f 1  sv-combined-3sv-net > temp
+cut -f 2  sv-combined-3sv-net >> temp
+cat temp | sort | uniq > temp-node-neighb
+awk '{print NR}'  sv-126-hardw-accessions.txt > temp-all-nodes
+cat temp-node-neighb temp-all-nodes | sort | uniq -u > temp-nodes-no-neighb
+
+sh  script-node-no-neighb >> sv-combined-3sv-conserv
+
+sv-print-link-conserv.2   pre-names sv-combined-3sv-conserv      sv-combined-3sv.table
+
+
