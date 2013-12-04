@@ -25,4 +25,6 @@ sv-print-link-conserv.2   pre-names sv-combined-3sv-conserv     sv-126-hardw-acc
 
 nohup sh -x script-find-ins-del-unknown 15 > out-script-find-ins-del-unknown-col15 2>&1 &
 # from within, calling script-3sv-check-unknown 
-
+# need sample.pair.noDup.norm.mapQgt16.sam & sample.pair.noDup.norm.mapQgt16.pileup for filtering
+# normal-abnom-ratio-window.2.useMap  param same as first svfilt
+# svFilterDelNormPE param same as first svfilt
