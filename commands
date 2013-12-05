@@ -1,5 +1,5 @@
 sh  script-combine-sv >   sv-126-hardw-accessions.txt
-# bamboo directory under boyce server
+# /home/linyong/linyong-under-fei-account/bamboo/ directory under boyce server
 # this command creates 
 # CitrusA chr1    84296   84610   chr1    85256   85471   6       F,      R,      DELETION        975.5   UNBAL   260     93
 # add sample name, insert avg, insert std
@@ -28,3 +28,6 @@ nohup sh -x script-find-ins-del-unknown 15 > out-script-find-ins-del-unknown-col
 # need sample.pair.noDup.norm.mapQgt16.sam & sample.pair.noDup.norm.mapQgt16.pileup for filtering
 # normal-abnom-ratio-window.2.useMap  param same as first svfilt
 # svFilterDelNormPE param same as first svfilt
+
+cut -f 1-14 ./sv-126-hardw-acc.2windows.table > temp
+paste temp dir-check-miss-CitrusA/CitrusA.sv.detect.unknow.1colum  dir-check-miss-CitrusB/CitrusB.sv.detect.unknow.1colum > sv-126-hardw-acc.2windows.unknown.table
