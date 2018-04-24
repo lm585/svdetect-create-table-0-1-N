@@ -1,0 +1,6 @@
+ for n in `cat temp-nodes-no-neighb`; 
+do 
+  awk 'BEGIN {ORS = ""} NR == '$n' ' sv-126-hardw-accessions.txt ; 
+  echo -n "	1	"
+  awk 'NR == '$n' {print $1;}' sv-126-hardw-accessions.txt
+done 
