@@ -1,0 +1,16 @@
+for s in `echo CitrusA CitrusB`
+do
+  grep LARGE_DUP dir-sv-$s/temp.txt | awk '$17 / $13 >= 1.5 && $18/$14 >= 1.5'  > temp.$$
+  wc -l temp.$$
+  cat temp.$$ | while read ll
+  do
+    echo -n "$s	";
+    fields=`echo "$ll" | cut -f 1-12`
+    echo -n "$fields	"
+    avg=`grep "^$s.pair.sam" 44bp-size-std-max-combined | head -1 | cut -f 2`
+    std=`grep "^$s.pair.sam" 44bp-size-std-max-combined | head -1 | cut -f 3`
+    echo "$avg	$std"
+  done
+done
+
+rm temp.$$
